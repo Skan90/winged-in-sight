@@ -20,10 +20,6 @@ public class BirdService {
         this.birdDao = birdDao;
     }
 
-    public int addBird(Bird bird) {
-        return birdDao.insertBird(bird);
-    }
-
     public List<Bird> getAllBirds(){
         return birdDao.selectAllBirds();
     }
@@ -32,11 +28,16 @@ public class BirdService {
         return birdDao.selectBirdById(id);
     }
 
-    public int deleteBird(UUID id){
-        return birdDao.deleteBirdById(id);
+    public int addBird(Bird bird) {
+        return birdDao.insertBird(bird);
     }
 
     public int updateBird(UUID id, Bird newBird) {
         return birdDao.updateBirdById(id, newBird);
     }
+
+    public int deleteBird(UUID id){
+        return birdDao.deleteBirdById(id);
+    }
+
 }

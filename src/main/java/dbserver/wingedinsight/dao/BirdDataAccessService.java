@@ -16,12 +16,8 @@ public class BirdDataAccessService implements BirdDao {
 
     @Autowired
     public BirdDataAccessService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
-    @Override
-    public int insertBird(UUID id, Bird bird) {
-        return 0;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
@@ -34,6 +30,7 @@ public class BirdDataAccessService implements BirdDao {
         });
     }
 
+
     @Override
     public Optional<Bird> selectBirdById(UUID id) {
         final String sql = "SELECT id, name FROM bird WHERE id = ?";
@@ -45,13 +42,31 @@ public class BirdDataAccessService implements BirdDao {
         return Optional.ofNullable(bird);
     }
 
+
     @Override
-    public int deleteBirdById(UUID id) {
-        return 0;
+    public int insertBird(UUID id, Bird bird) {
+        final String sql = "" +
+                "INSERT INTO bird (" +
+                " id, " +
+                " name) " +
+                "VALUES (?, ?)";
+        return jdbcTemplate.update(
+                sql,
+                id,
+                bird.getName()
+        );
     }
+
 
     @Override
     public int updateBirdById(UUID id, Bird bird) {
         return 0;
     }
+
+
+    @Override
+    public int deleteBirdById(UUID id) {
+        return 0;
+    }
+
 }

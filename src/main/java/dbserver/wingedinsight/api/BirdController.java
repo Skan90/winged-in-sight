@@ -22,27 +22,32 @@ public class BirdController {
     public BirdController(BirdService birdService) {
         this.birdService = birdService;
     }
-    @PostMapping
-    public void addBird(@Valid @NonNull @RequestBody Bird bird) {
-        birdService.addBird(bird);
-    }
+
     @GetMapping
     public List<Bird> getAllBirds(){
         return birdService.getAllBirds();
     }
+
     @GetMapping(path = "{id}")
     public Bird getBirdById(@PathVariable("id") UUID id){
         return birdService.getBirdById(id)
                 .orElse(null); // Can be changed to a custom msg 404 user not found
     }
-    @DeleteMapping(path = "{id}")
-    public void deleteBirdById(@PathVariable("id") UUID id){
-        birdService.deleteBird(id);
+
+    @PostMapping
+    public void addBird(@Valid @NonNull @RequestBody Bird bird) {
+        birdService.addBird(bird);
     }
+
 
     @PutMapping(path = "{id}")
     public void updateBird(@PathVariable("id") UUID id,@Valid @NonNull @RequestBody Bird birdToUpdate){
         birdService.updateBird(id, birdToUpdate);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteBirdById(@PathVariable("id") UUID id){
+        birdService.deleteBird(id);
     }
 
 }

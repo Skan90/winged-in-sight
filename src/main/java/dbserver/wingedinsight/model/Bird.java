@@ -27,4 +27,12 @@ public class Bird {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Bird{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
