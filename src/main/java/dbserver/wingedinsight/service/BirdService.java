@@ -29,6 +29,10 @@ public class BirdService {
     }
 
     public int addBird(Bird bird) {
+        Optional<Bird> birdOptional = birdDao.selectBirdByName(bird.getName());
+        if (birdOptional.isPresent()) {
+            throw new IllegalStateException("Bird already registered.");
+        }
         return birdDao.insertBird(bird);
     }
 

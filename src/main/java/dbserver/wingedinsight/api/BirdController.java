@@ -20,11 +20,13 @@ public class BirdController {
 
     @Autowired
     public BirdController(BirdService birdService) {
+
         this.birdService = birdService;
     }
 
     @GetMapping
     public List<Bird> getAllBirds(){
+
         return birdService.getAllBirds();
     }
 
@@ -36,6 +38,7 @@ public class BirdController {
 
     @PostMapping
     public void addBird(@Valid @NonNull @RequestBody Bird bird) {
+
         birdService.addBird(bird);
     }
 
@@ -47,6 +50,7 @@ public class BirdController {
 
     @DeleteMapping(path = "{id}")
     public void deleteBirdById(@PathVariable("id") UUID id){
+
         birdService.deleteBird(id);
     }
 

@@ -31,6 +31,11 @@ public class FakeBirdDataAccessService implements BirdDao{
     }
 
     @Override
+    public Optional<Bird> selectBirdByName(String name) {
+        return Optional.empty();
+    }
+
+    @Override
     public int deleteBirdById(UUID id) {
         Optional<Bird> birdMaybe = selectBirdById(id);
         if(birdMaybe.isEmpty()){

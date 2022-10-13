@@ -2,6 +2,7 @@ package dbserver.wingedinsight.dao;
 
 import dbserver.wingedinsight.model.Bird;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +41,17 @@ public class BirdDataAccessService implements BirdDao {
             return new Bird(birdId, name);
         });
         return Optional.ofNullable(bird);
+    }
+
+    @Override
+    public Optional<Bird> selectBirdByName(String name) {
+       final String sql = "SELECT id, name FROM bird WHERE name = ?";
+       Bird bird = jdbcTemplate.queryForObject(sql, new Object[]{name}, (resultSet, i) ->{
+           UUID birdId = UUID.fromString(resultSet.getString("id"));
+           String birdName = resultSet.getString("name");
+           return new Bird(birdId, birdName);
+       });
+       return Optional.ofNullable(bird);
     }
 
 

@@ -20,6 +20,8 @@ public interface BirdDao {
 
     Optional<Bird> selectBirdById(UUID id);
 
+    Optional<Bird> selectBirdByName(String name);
+
     int deleteBirdById(UUID id);
 
     int updateBirdById(UUID id, Bird bird);
