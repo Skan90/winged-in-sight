@@ -2,8 +2,8 @@ package dbserver.wingedinsight.dao;
 
 import dbserver.wingedinsight.model.Bird;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -71,14 +71,25 @@ public class BirdDataAccessService implements BirdDao {
 
 
     @Override
-    public int updateBirdById(UUID id, Bird bird) {
-        return 0;
+    public int updateBirdById(@NonNull UUID id, @NonNull Bird bird) {
+        final String sql = "" +
+                "UPDATE bird " +
+                "SET name = ? " +
+                "WHERE id = ?";
+        return jdbcTemplate.update(
+                sql,
+                bird.getName(),
+                bird.getId()
+        );
     }
 
 
     @Override
-    public int deleteBirdById(UUID id) {
-        return 0;
+    public int deleteBirdById(@NonNull UUID id) {
+        final String sql = "" +
+                "DELETE FROM bird " +
+                "WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
     }
 
 }
