@@ -1,35 +1,23 @@
-package dbserver.wingedinsight.model;
+package dbserver.wingedinsight.model.dto;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
-
-@Entity(name = "Bird")
-public class Bird implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BirdDto {
     private Integer id;
     private String commonName;
     private String birdOrder;
     private String family;
     private String genus;
-
-    @Column(unique = true)
     private String species;
     private String photo;
     private String localization;
 
-    public Bird() {
-    }
-
-    public Bird(Integer id,
-                String commonName,
-                String birdOrder,
-                String family,
-                String genus,
-                String species,
-                String photo,
-                String localization) {
+    public BirdDto(Integer id,
+                   String commonName,
+                   String birdOrder,
+                   String family,
+                   String genus,
+                   String species,
+                   String photo,
+                   String localization) {
         this.id = id;
         this.commonName = commonName;
         this.birdOrder = birdOrder;
@@ -38,6 +26,9 @@ public class Bird implements Serializable {
         this.species = species;
         this.photo = photo;
         this.localization = localization;
+    }
+
+    public BirdDto() {
     }
 
     public Integer getId() {
@@ -102,32 +93,5 @@ public class Bird implements Serializable {
 
     public void setLocalization(String localization) {
         this.localization = localization;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bird bird = (Bird) o;
-        return Objects.equals(id, bird.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Bird{" +
-                "id=" + id +
-                ", commonName='" + commonName + '\'' +
-                ", birdOrder='" + birdOrder + '\'' +
-                ", family='" + family + '\'' +
-                ", genus='" + genus + '\'' +
-                ", species='" + species + '\'' +
-                ", photo='" + photo + '\'' +
-                ", localization='" + localization + '\'' +
-                '}';
     }
 }

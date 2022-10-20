@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class WingedInSightApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void main() {
+		WingedInSightApplication.main(new String[] {});
+	}
 
 }

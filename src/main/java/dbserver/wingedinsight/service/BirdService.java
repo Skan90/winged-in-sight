@@ -1,47 +1,18 @@
 package dbserver.wingedinsight.service;
 
-import dbserver.wingedinsight.dao.BirdDao;
 import dbserver.wingedinsight.model.Bird;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import dbserver.wingedinsight.model.dto.BirdDto;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
-@Service
-public class BirdService {
+public interface BirdService {
+    Bird findById(Integer id);
 
-    private final BirdDao birdDao;
+    List<Bird> findAllBirds();
 
-    @Autowired
-    public BirdService(@Qualifier("postgres") BirdDao birdDao) {
-        this.birdDao = birdDao;
-    }
+    Bird create(BirdDto obj);
+    
+    Bird update(BirdDto obj);
 
-    public List<Bird> getAllBirds(){
-        return birdDao.selectAllBirds();
-    }
-
-    public Optional<Bird> getBirdById(UUID id){
-        return birdDao.selectBirdById(id);
-    }
-
-    public int addBird(Bird bird) {
-        Optional<Bird> birdOptional = birdDao.selectBirdByName(bird.getName());
-        if (birdOptional.isPresent()) {
-            throw new IllegalStateException("Bird already registered.");
-        }
-        return birdDao.insertBird(bird);
-    }
-
-    public int updateBird(UUID id, Bird newBird) {
-        return birdDao.updateBirdById(id, newBird);
-    }
-
-    public int deleteBird(UUID id){
-        return birdDao.deleteBirdById(id);
-    }
-
+    void delete(Integer id);
 }

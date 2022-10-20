@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WingedInSightApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(WingedInSightApplication.class, args);
 	}
 
