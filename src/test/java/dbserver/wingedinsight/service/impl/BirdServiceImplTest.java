@@ -29,6 +29,7 @@ class BirdServiceImplTest {
     public static final String FAMILY =      "Accipitridae";
     public static final String SPECIES =      "H. leucocephalus";
     public static final int INDEX =            0;
+    public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";
 
     @InjectMocks // Instead of @Mock, because we need a real instance for testing methods
     private BirdServiceImpl service;
@@ -120,13 +121,39 @@ class BirdServiceImplTest {
             service.create(birdDto);
         } catch (Exception ex){
             assertEquals(DuplicatedKeyViolationException.class, ex.getClass());
-            assertEquals("Bird species already registered in the system. Please, try adding a new bird species", ex.getMessage());
+            assertEquals(BIRD_SPECIES_ALREADY_REGISTERED, ex.getMessage());
         }
     }
 
     @Test
-    void update() {
+    void whenUpdateBirdThenReturnSuccess() {
+        // given
+        when(birdRepository.save(any())).thenReturn(bird);
+        // when
+        Bird response = service.update(birdDto);
+        // then
+        assertNotNull(response);
+        assertEquals(ID, response.getId());
+        assertEquals(SPECIES, response.getSpecies());
+        assertEquals(COMMON_NAME, response.getCommonName());
+
     }
+
+    @Test
+    void whenUpdateBirdThenReturnAnDuplicatedKeyViolationException() {
+        // given
+        when(birdRepository.findBySpecies(anyString())).thenReturn(birdOptional);
+        // when
+
+        try{
+            birdOptional.get().setId(2);
+            service.update(birdDto);
+        } catch (Exception ex){
+            assertEquals(DuplicatedKeyViolationException.class, ex.getClass());
+            assertEquals(BIRD_SPECIES_ALREADY_REGISTERED, ex.getMessage());
+        }
+    }
+
 
     @Test
     void delete() {
