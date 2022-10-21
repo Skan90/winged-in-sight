@@ -18,11 +18,11 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
 
     private BirdRepository birdRepository;
 
-    @Autowired
     private ModelMapper mapper;
     @Autowired
-    public BirdServiceImpl(@Qualifier("postgresql") BirdRepository birdRepository) {
+    public BirdServiceImpl(@Qualifier("postgresql") BirdRepository birdRepository, ModelMapper mapper) {
         this.birdRepository = birdRepository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -56,9 +56,7 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
     private void findBySpecies(BirdDto obj) {
         Optional<Bird> bird = birdRepository.findBySpecies(obj.getSpecies());
         if(bird.isPresent() && !bird.get().getId().equals(obj.getId())) {
-            throw new DuplicatedKeyViolationException("Bird species with name '"
-                    + obj.getSpecies()
-                    + "' already registered in the system. Please, try adding a new bird species");
+            throw new DuplicatedKeyViolationException("Bird species already registered in the system. Please, try adding a new bird species");
         }
     }
 }

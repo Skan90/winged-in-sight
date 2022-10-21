@@ -3,6 +3,7 @@ package dbserver.wingedinsight.service.impl;
 import dbserver.wingedinsight.model.Bird;
 import dbserver.wingedinsight.model.dto.BirdDto;
 import dbserver.wingedinsight.repository.BirdRepository;
+import dbserver.wingedinsight.service.exceptions.DuplicatedKeyViolationException;
 import dbserver.wingedinsight.service.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class BirdServiceImplTest {
@@ -42,9 +44,13 @@ class BirdServiceImplTest {
     private BirdDto birdDto;
     private Optional<Bird> birdOptional;
 
+    BirdServiceImplTest() {
+    }
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        mapper = mock(ModelMapper.class);
         startBird();
     }
 
@@ -62,7 +68,9 @@ class BirdServiceImplTest {
     }
     @Test
     void whenFindByIdReturnsAnObjectNotFoundException(){
-        when(birdRepository.findById(anyInt())).thenThrow(new ObjectNotFoundException("Bird not found by the ID number given. Please, try another ID."));
+        when(birdRepository.findById(anyInt()))
+                .thenThrow(new ObjectNotFoundException("Bird not found by the ID number given. " +
+                        "Please, try another ID."));
 
         try{
             service.findById(ID);
@@ -88,7 +96,32 @@ class BirdServiceImplTest {
     }
 
     @Test
-    void create() {
+    void whenCreateBirdThenReturnSuccess() {
+        // given
+        when(birdRepository.save(any())).thenReturn(bird);
+        // when
+        Bird response = service.create(birdDto);
+        // then
+        assertNotNull(response);
+        assertEquals(ID, response.getId());
+        assertEquals(SPECIES, response.getSpecies());
+        assertEquals(COMMON_NAME, response.getCommonName());
+
+    }
+
+    @Test
+    void whenCreateBirdThenReturnAnDuplicatedKeyViolationException() {
+        // given
+        when(birdRepository.findBySpecies(anyString())).thenReturn(birdOptional);
+        // when
+
+        try{
+            birdOptional.get().setId(2);
+            service.create(birdDto);
+        } catch (Exception ex){
+            assertEquals(DuplicatedKeyViolationException.class, ex.getClass());
+            assertEquals("Bird species already registered in the system. Please, try adding a new bird species", ex.getMessage());
+        }
     }
 
     @Test
