@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +19,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
+@SpringBootTest
 class BirdServiceImplTest {
 
     public static final int ID =              4242;
@@ -30,6 +31,7 @@ class BirdServiceImplTest {
     public static final String SPECIES =      "H. leucocephalus";
     public static final int INDEX =            0;
     public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";
+    public static final String BIRD_NOT_FOUND_BY_THE_ID = "Bird not found by the ID number given. Please, try another ID.";
 
     @InjectMocks // Instead of @Mock, because we need a real instance for testing methods
     private BirdServiceImpl service;
@@ -70,14 +72,13 @@ class BirdServiceImplTest {
     @Test
     void whenFindByIdReturnsAnObjectNotFoundException(){
         when(birdRepository.findById(anyInt()))
-                .thenThrow(new ObjectNotFoundException("Bird not found by the ID number given. " +
-                        "Please, try another ID."));
+                .thenThrow(new ObjectNotFoundException(BIRD_NOT_FOUND_BY_THE_ID));
 
         try{
             service.findById(ID);
         } catch (Exception ex) {
             assertEquals(ObjectNotFoundException.class, ex.getClass());
-            assertEquals("Bird not found by the ID number given. Please, try another ID.", ex.getMessage());
+            assertEquals(BIRD_NOT_FOUND_BY_THE_ID, ex.getMessage());
         }
     }
 
@@ -156,7 +157,24 @@ class BirdServiceImplTest {
 
 
     @Test
-    void delete() {
+    void deleteBirdWithSuccess() {
+        when(birdRepository.findById(anyInt())).thenReturn(birdOptional);
+        doNothing().when(birdRepository).deleteById(anyInt());
+        service.delete(ID);
+        verify(birdRepository, times(1)).deleteById(anyInt());
+    }
+
+    @Test
+    void deleteBirdWithObjectNotFoundException() {
+        when((birdRepository.findById(anyInt())))
+                .thenThrow(new ObjectNotFoundException(BIRD_NOT_FOUND_BY_THE_ID));
+
+        try {
+            service.delete(ID);
+        } catch (Exception ex) {
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
+            assertEquals(BIRD_NOT_FOUND_BY_THE_ID, ex.getMessage());
+        }
     }
 
     private void startBird() {
