@@ -119,28 +119,6 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/find-by-species/",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"bird",
-						"find-by-species",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET BY ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
 					"raw": "localhost:8080/api/v1/bird/find-by-species/ia",
 					"host": [
 						"localhost"
@@ -152,6 +130,27 @@
 						"bird",
 						"find-by-species",
 						"ia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/bird/400",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"bird",
+						"400"
 					]
 				}
 			},
