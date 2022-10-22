@@ -4,18 +4,29 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 @Entity(name = "Bird")
+@Table(indexes = {
+        @Index(name = "name_pt_br_index", columnList = "namePtBr"),
+        @Index(name = "name_eng_index", columnList = "nameEng"),
+        @Index(name = "species_index", columnList = "species", unique=true),
+        @Index(name = "habitat_index", columnList = "habitat")
+})
 public class Bird implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String commonName;
-    private String birdOrder;
-    private String family;
-    private String genus;
+    private String namePtBr;
+    private String nameEng;
 
     @Column(unique = true)
     private String species;
+
+    private String family;
+    private Integer size;
+    private String gender;
+    private String color;
+    private String habitat;
     private String photo;
     private String localization;
 
@@ -23,19 +34,25 @@ public class Bird implements Serializable {
     }
 
     public Bird(Integer id,
-                String commonName,
-                String birdOrder,
-                String family,
-                String genus,
+                String namePtBr,
+                String nameEng,
                 String species,
+                String family,
+                Integer size,
+                String gender,
+                String color,
+                String habitat,
                 String photo,
                 String localization) {
         this.id = id;
-        this.commonName = commonName;
-        this.birdOrder = birdOrder;
-        this.family = family;
-        this.genus = genus;
+        this.namePtBr = namePtBr;
+        this.nameEng = nameEng;
         this.species = species;
+        this.family = family;
+        this.size = size;
+        this.gender = gender;
+        this.color = color;
+        this.habitat = habitat;
         this.photo = photo;
         this.localization = localization;
     }
@@ -48,20 +65,28 @@ public class Bird implements Serializable {
         this.id = id;
     }
 
-    public String getCommonName() {
-        return commonName;
+    public String getNamePtBr() {
+        return namePtBr;
     }
 
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
+    public void setNamePtBr(String namePtBr) {
+        this.namePtBr = namePtBr;
     }
 
-    public String getBirdOrder() {
-        return birdOrder;
+    public String getNameEng() {
+        return nameEng;
     }
 
-    public void setBirdOrder(String birdOrder) {
-        this.birdOrder = birdOrder;
+    public void setNameEng(String nameEng) {
+        this.nameEng = nameEng;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public String getFamily() {
@@ -72,20 +97,36 @@ public class Bird implements Serializable {
         this.family = family;
     }
 
-    public String getGenus() {
-        return genus;
+    public Integer getSize() {
+        return size;
     }
 
-    public void setGenus(String genus) {
-        this.genus = genus;
+    public void setSize(Integer size) {
+        this.size = size;
     }
 
-    public String getSpecies() {
-        return species;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSpecies(String species) {
-        this.species = species;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
     }
 
     public String getPhoto() {
@@ -121,11 +162,14 @@ public class Bird implements Serializable {
     public String toString() {
         return "Bird{" +
                 "id=" + id +
-                ", commonName='" + commonName + '\'' +
-                ", birdOrder='" + birdOrder + '\'' +
-                ", family='" + family + '\'' +
-                ", genus='" + genus + '\'' +
+                ", namePtBr='" + namePtBr + '\'' +
+                ", nameEng='" + nameEng + '\'' +
                 ", species='" + species + '\'' +
+                ", family='" + family + '\'' +
+                ", size=" + size +
+                ", gender='" + gender + '\'' +
+                ", color='" + color + '\'' +
+                ", habitat='" + habitat + '\'' +
                 ", photo='" + photo + '\'' +
                 ", localization='" + localization + '\'' +
                 '}';

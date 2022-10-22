@@ -1,7 +1,7 @@
 package dbserver.wingedinsight.controller;
 
 import dbserver.wingedinsight.model.dto.BirdDto;
-import dbserver.wingedinsight.service.impl.BirdServiceImpl;
+import dbserver.wingedinsight.service.BirdService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,15 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/bird")
 public class BirdController {
     public static final String ID = "/{id}";
-    @Autowired
-    private BirdServiceImpl birdService;
+
+    private BirdService birdService;
+    private ModelMapper mapper;
 
     @Autowired
-    private ModelMapper mapper;
+    public BirdController(BirdService birdService, ModelMapper mapper) {
+        this.birdService = birdService;
+        this.mapper = mapper;
+    }
 
     @GetMapping
     public ResponseEntity<List<BirdDto>> findAllBirds(){

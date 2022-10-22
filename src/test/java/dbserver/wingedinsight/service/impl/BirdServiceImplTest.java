@@ -24,14 +24,21 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class BirdServiceImplTest {
 
-    public static final int ID =              4242;
-    public static final String COMMON_NAME = "Bald eagle";
-    public static final String BIRD_ORDER =  "Accipitriformes and Falconiformes";
-    public static final String FAMILY =      "Accipitridae";
-    public static final String SPECIES =      "H. leucocephalus";
+    public static final Integer ID =              4242;
+    public static final String NAME_PT_BR =  "João-grande";
+    public static final String NAME_ENG = "Maguari Stork";
+    public static final String SPECIES =      "Ciconia maguari";
+    public static final String FAMILY =      "Ciconiidae";
     public static final int INDEX =            0;
+    public static final Integer SIZE = 85;
+    public static final String GENDER = "Fêmea";
+    public static final String COLOR = "Branca";
+    public static final String HABITAT = "Banhado com espelho d'água | Campo alagado, campo úmido, várzeas alagadas";
+    public static final String PHOTO = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg";
+    public static final String LOCALIZATION = "South and Extreme North of Brazil";
     public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";
     public static final String BIRD_NOT_FOUND_BY_THE_ID = "Bird not found by the ID number given. Please, try another ID.";
+
 
     @InjectMocks // Instead of @Mock, because we need a real instance for testing methods
     private BirdServiceImpl service;
@@ -67,7 +74,7 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.getClass());
         assertEquals(ID, response.getId());
         assertEquals(SPECIES, response.getSpecies());
-        assertEquals(COMMON_NAME, response.getCommonName());
+        assertEquals(NAME_ENG, response.getNameEng());
     }
     @Test
     void whenFindByIdReturnsAnObjectNotFoundException(){
@@ -94,7 +101,7 @@ class BirdServiceImplTest {
 
         assertEquals(ID, response.get(INDEX).getId());
         assertEquals(SPECIES, response.get(INDEX).getSpecies());
-        assertEquals(COMMON_NAME, response.get(INDEX).getCommonName());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
     }
 
     @Test
@@ -107,7 +114,7 @@ class BirdServiceImplTest {
         assertNotNull(response);
         assertEquals(ID, response.getId());
         assertEquals(SPECIES, response.getSpecies());
-        assertEquals(COMMON_NAME, response.getCommonName());
+        assertEquals(NAME_ENG, response.getNameEng());
 
     }
 
@@ -136,7 +143,7 @@ class BirdServiceImplTest {
         assertNotNull(response);
         assertEquals(ID, response.getId());
         assertEquals(SPECIES, response.getSpecies());
-        assertEquals(COMMON_NAME, response.getCommonName());
+        assertEquals(NAME_ENG, response.getNameEng());
 
     }
 
@@ -178,31 +185,43 @@ class BirdServiceImplTest {
     }
 
     private void startBird() {
-        bird = new Bird( ID,
-                COMMON_NAME,
-                BIRD_ORDER,
-                FAMILY,
-                "Haliaeetus",
+        bird = new Bird(
+                ID,
+                NAME_PT_BR,
+                NAME_ENG,
                 SPECIES,
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/About_to_Launch_%2826075320352%29.jpg/420px-About_to_Launch_%2826075320352%29.jpg",
-                "North America");
+                FAMILY,
+                SIZE,
+                GENDER,
+                COLOR,
+                HABITAT,
+                PHOTO,
+                LOCALIZATION);
 
-        birdDto = new BirdDto( ID,
-                COMMON_NAME,
-                BIRD_ORDER,
-                FAMILY,
-                "Haliaeetus",
+        birdDto = new BirdDto(
+                ID,
+                NAME_PT_BR,
+                NAME_ENG,
                 SPECIES,
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/About_to_Launch_%2826075320352%29.jpg/420px-About_to_Launch_%2826075320352%29.jpg",
-                "North America");
+                FAMILY,
+                SIZE,
+                GENDER,
+                COLOR,
+                HABITAT,
+                PHOTO,
+                LOCALIZATION);
 
-        birdOptional = Optional.of(new Bird( ID,
-                COMMON_NAME,
-                BIRD_ORDER,
-                FAMILY,
-                "Haliaeetus",
+        birdOptional = Optional.of(new Bird(
+                ID,
+                NAME_PT_BR,
+                NAME_ENG,
                 SPECIES,
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/About_to_Launch_%2826075320352%29.jpg/420px-About_to_Launch_%2826075320352%29.jpg",
-                "North America"));
+                FAMILY,
+                SIZE,
+                GENDER,
+                COLOR,
+                HABITAT,
+                PHOTO,
+                LOCALIZATION));
     }
 }
