@@ -30,5 +30,7 @@ https://www.postgresql.org/docs/current/sql-createtableas.html
 https://www.baeldung.com/jpa-indexes
 https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
 https://www.educba.com/postgresql-escape-single-quote/
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#appendix.query.method.predicate
+https://www.baeldung.com/spring-jpa-like-queries
 
 https://youtube.com/playlist?list=PLNA1TW-Zfz6PHtNQ2ueqjP55wdsos2ULc
