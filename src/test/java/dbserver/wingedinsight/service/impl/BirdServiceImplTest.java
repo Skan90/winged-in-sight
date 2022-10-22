@@ -24,12 +24,11 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class BirdServiceImplTest {
 
-    public static final Integer ID =              4242;
-    public static final String NAME_PT_BR =  "João-grande";
+    public static final Integer ID = 4242;
+    public static final String NAME_PT_BR = "João-grande";
     public static final String NAME_ENG = "Maguari Stork";
-    public static final String SPECIES =      "Ciconia maguari";
-    public static final String FAMILY =      "Ciconiidae";
-    public static final int INDEX =            0;
+    public static final String SPECIES = "Ciconia maguari";
+    public static final String FAMILY = "Ciconiidae";
     public static final Integer SIZE = 85;
     public static final String GENDER = "Fêmea";
     public static final String COLOR = "Branca";
@@ -38,6 +37,7 @@ class BirdServiceImplTest {
     public static final String LOCALIZATION = "South and Extreme North of Brazil";
     public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";
     public static final String BIRD_NOT_FOUND_BY_THE_ID = "Bird not found by the ID number given. Please, try another ID.";
+    public static final int INDEX = 0;
 
 
     @InjectMocks // Instead of @Mock, because we need a real instance for testing methods
