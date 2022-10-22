@@ -30,9 +30,19 @@ public class BirdController {
     public ResponseEntity<List<BirdDto>> findAllBirds(){
         return ResponseEntity.ok().body(
                 birdService.findAllBirds()
-                .stream()
-                .map(x -> mapper.map(x, BirdDto.class))
-                .collect(Collectors.toList())
+                        .stream()
+                        .map(x -> mapper.map(x, BirdDto.class))
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("/find-by-species/{species}")
+    public ResponseEntity<List<BirdDto>> findBySpeciesContaining(@PathVariable("species") String species){
+        return ResponseEntity.ok().body(
+                birdService.findBySpeciesContaining(species)
+                        .stream()
+                        .map(x -> mapper.map(x, BirdDto.class))
+                        .collect(Collectors.toList())
         );
     }
 

@@ -10,6 +10,8 @@ public interface BirdService {
 
     List<Bird> findAllBirds();
 
+    List<Bird> findBySpeciesContaining(String species);
+
     Bird create(BirdDto obj);
     
     Bird update(BirdDto obj);

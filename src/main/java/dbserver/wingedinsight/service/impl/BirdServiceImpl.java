@@ -59,4 +59,11 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
             throw new DuplicatedKeyViolationException("Bird species already registered in the system. Please, try adding a new bird species");
         }
     }
+
+    @Override
+    public List<Bird> findBySpeciesContaining(String species) {
+        List<Bird> results = birdRepository.findBySpeciesContaining(species);
+        return results;
+
+    }
 }

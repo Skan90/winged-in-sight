@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "da19f7bb-fcb6-4315-a4ab-db86eebe1761",
+		"_postman_id": "0df3b25e-4f70-4e0a-8941-4ad58d63cf43",
 		"name": "Winged",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"commonName\": \"Broad-billed hummingbird\",\r\n    \"birdOrder\": \"Apodiformes\",\r\n    \"family\": \"Trochilidae\",\r\n    \"genus\": \"Cynanthus\",\r\n    \"species\": \"Cynanthus latirostris\",\r\n    \"photo\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/BroadbilledHummingbird.jpg/330px-BroadbilledHummingbird.jpg\",\r\n    \"localization\": \"North America\"\r\n}",
+					"raw": "{\r\n       \"namePtBr\":\"Garça-branca-grande\",\r\n       \"nameEng\":\"Great Egret\",\r\n       \"species\":\"Ardea alba\",\r\n       \"family\":\"Ardeidae\",\r\n       \"size\":\"65\",\r\n       \"gender\":\"Macho\",\r\n       \"color\":\"Branca\",\r\n       \"habitat\":\"Banhado com espelho d água, Campo alagado, campo úmido, várzeas alagadas\",\r\n       \"photo\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Garca_no_pesqueiro_REFON_4.jpg/605px-Garca_no_pesqueiro_REFON_4.jpg\",\r\n       \"localization\":\"África, Europa, Américas do Sul e do Norte\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"commonName\": \"Águia-cinzenta\",\r\n    \"birdOrder\": \"Accipitriformes\",\r\n    \"family\": \"Accipitridae\",\r\n    \"genus\": \"Urubitinga\",\r\n    \"species\": \"Urubitinga coronatus\",\r\n    \"photo\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Harpyhaliaetus_coronatus_-captive-8b.jpg/420px-Harpyhaliaetus_coronatus_-captive-8b.jpg\",\r\n    \"localization\": \"South of Brazil\"\r\n}",
+					"raw": "{\r\n       \"namePtBr\":\"Capororoca\",\r\n       \"nameEng\":\"Coscoroba Swan\",\r\n       \"species\":\"Cosocoroba coscoroba\",\r\n       \"family\":\"Anatidae\",\r\n       \"size\":\"65\",\r\n       \"gender\":\"Fêmea\",\r\n       \"color\":\"Branca\",\r\n       \"habitat\":\"Banhado com espelho d água, Campo alagado, campo úmido, várzeas alagadas\",\r\n       \"photo\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coscoroba.swan.2.arp.750pix.jpg/420px-Coscoroba.swan.2.arp.750pix.jpg\",\r\n       \"localization\":\"América do Sul\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"commonName\": \"Águia-cinzenta\",\r\n    \"birdOrder\": \"Accipitriformes\",\r\n    \"family\": \"Accipitridae\",\r\n    \"genus\": \"Urubitinga\",\r\n    \"species\": \"U coronatus\",\r\n    \"photo\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Harpyhaliaetus_coronatus_-captive-8b.jpg/420px-Harpyhaliaetus_coronatus_-captive-8b.jpg\",\r\n    \"localization\": \"South of Brazil\"\r\n}",
+					"raw": "{\r\n       \"namePtBr\":\"João-grande\",\r\n       \"nameEng\":\"Maguari Stork\",\r\n       \"species\":\"C. maguari\",\r\n       \"family\":\"Ciconiidae\",\r\n       \"size\":\"85\",\r\n       \"gender\":\"Fêmea\",\r\n       \"color\":\"Branca\",\r\n       \"habitat\":\"Banhado com espelho d água, Campo alagado, campo úmido, várzeas alagadas\",\r\n       \"photo\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg\",\r\n       \"localization\":\"South and Extreme North of Brazil\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -114,12 +114,12 @@
 			"response": []
 		},
 		{
-			"name": "GET BY ID",
+			"name": "FIND BY PART OF SPECIES NAME",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/1",
+					"raw": "localhost:8080/api/v1/bird/find-by-species/",
 					"host": [
 						"localhost"
 					],
@@ -128,7 +128,30 @@
 						"api",
 						"v1",
 						"bird",
-						"1"
+						"find-by-species",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/bird/find-by-species/ia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"bird",
+						"find-by-species",
+						"ia"
 					]
 				}
 			},
@@ -140,7 +163,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/1",
+					"raw": "localhost:8080/api/v1/bird/400",
 					"host": [
 						"localhost"
 					],
@@ -149,7 +172,7 @@
 						"api",
 						"v1",
 						"bird",
-						"1"
+						"400"
 					]
 				}
 			},
