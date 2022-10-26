@@ -4,6 +4,7 @@ import dbserver.wingedinsight.model.Bird;
 import dbserver.wingedinsight.model.dto.BirdDto;
 import dbserver.wingedinsight.service.impl.BirdServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -49,22 +50,27 @@ class BirdControllerTest {
     }
 
     @Test
+    @Disabled
     void findAllBirds() {
     }
 
     @Test
+    @Disabled
     void findById() {
     }
 
     @Test
+    @Disabled
     void create() {
     }
 
     @Test
+    @Disabled
     void update() {
     }
 
     @Test
+    @Disabled
     void delete() {
     }
 
