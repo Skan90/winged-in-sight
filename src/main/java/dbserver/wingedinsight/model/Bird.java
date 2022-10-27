@@ -16,14 +16,11 @@ public class Bird implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "name_pt_br")
     private String namePtBr;
-    @Column(name = "name_eng")
     private String nameEng;
 
     @Column(unique = true)
     private String species;
-    @Column(name = "family")
     private String family;
     private Integer size;
     private String gender;
