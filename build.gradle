@@ -20,6 +20,7 @@ dependencies {
 	implementation 'org.modelmapper:modelmapper:3.1.0'
 	implementation 'org.flywaydb:flyway-core'
 	implementation 'com.zaxxer:HikariCP'
+	implementation 'com.heroku.sdk:heroku-deploy:3.0.5'
 	implementation 'org.apache.tomcat:tomcat-jdbc'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
