@@ -23,7 +23,7 @@ dependencies {
 	implementation 'org.apache.tomcat:tomcat-jdbc'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.postgresql:postgresql'
 	testImplementation 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
