@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("api/v1/bird")
 public class BirdController {
