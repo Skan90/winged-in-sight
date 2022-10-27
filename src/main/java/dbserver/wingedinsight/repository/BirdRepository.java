@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository("postgresql")
+@Repository
 public interface BirdRepository extends JpaRepository<Bird, Integer> {
 
     Optional<Bird> findBySpecies(String species);
