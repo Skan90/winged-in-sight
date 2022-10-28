@@ -19,7 +19,6 @@ public class Bird implements Serializable {
     private String namePtBr;
     private String nameEng;
 
-    @Column(unique = true)
     private String species;
     private String family;
     private Integer size;
