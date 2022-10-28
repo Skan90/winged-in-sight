@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "0df3b25e-4f70-4e0a-8941-4ad58d63cf43",
 		"name": "Winged",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24069139"
 	},
 	"item": [
 		{
@@ -20,15 +21,18 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/bird",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
-						"bird"
+						"bird",
+						""
 					]
 				}
 			},
@@ -49,11 +53,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/bird",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -70,7 +76,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n       \"namePtBr\":\"João-grande\",\r\n       \"nameEng\":\"Maguari Stork\",\r\n       \"species\":\"C. maguari\",\r\n       \"family\":\"Ciconiidae\",\r\n       \"size\":\"85\",\r\n       \"gender\":\"Fêmea\",\r\n       \"color\":\"Branca\",\r\n       \"habitat\":\"Banhado com espelho d água, Campo alagado, campo úmido, várzeas alagadas\",\r\n       \"photo\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg\",\r\n       \"localization\":\"South and Extreme North of Brazil\"\r\n}",
+					"raw": "{\r\n       \"namePtBr\":\"João-grande\",\r\n       \"nameEng\":\"Maguari Stork\",\r\n       \"species\":\"C. maguari\",\r\n       \"family\":\"Ciconiidae\",\r\n       \"size\":\"85\",\r\n       \"gender\":\"Macho\",\r\n       \"color\":\"Branca\",\r\n       \"habitat\":\"Banhado com espelho d água, Campo alagado, campo úmido, várzeas alagadas\",\r\n       \"photo\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg\",\r\n       \"localization\":\"South and Extreme North of Brazil\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -78,16 +84,18 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/2",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird/3",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"bird",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -99,11 +107,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
@@ -119,17 +129,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/find-by-species/ia",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird/find-by-species/magua",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"bird",
 						"find-by-species",
-						"ia"
+						"magua"
 					]
 				}
 			},
@@ -141,16 +153,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/400",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird/1",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"bird",
-						"400"
+						"1"
 					]
 				}
 			},
@@ -158,20 +172,36 @@
 		},
 		{
 			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/bird/400",
+					"raw": "https://wingedinsight.herokuapp.com/api/v1/bird/4",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"wingedinsight",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"v1",
 						"bird",
-						"400"
+						"4"
 					]
 				}
 			},
