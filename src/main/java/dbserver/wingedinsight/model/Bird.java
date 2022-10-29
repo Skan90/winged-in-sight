@@ -1,5 +1,8 @@
 package dbserver.wingedinsight.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.apache.commons.lang3.StringUtils;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,7 +21,6 @@ public class Bird implements Serializable {
     private Integer id;
     private String namePtBr;
     private String nameEng;
-
     @Column(unique = true)
     private String species;
     private String family;
@@ -69,7 +71,8 @@ public class Bird implements Serializable {
     }
 
     public void setNamePtBr(String namePtBr) {
-        this.namePtBr = namePtBr;
+
+        this.namePtBr = StringUtils.lowerCase(namePtBr);
     }
 
     public String getNameEng() {
@@ -77,7 +80,7 @@ public class Bird implements Serializable {
     }
 
     public void setNameEng(String nameEng) {
-        this.nameEng = nameEng;
+        this.nameEng = StringUtils.lowerCase(nameEng);
     }
 
     public String getSpecies() {
@@ -85,7 +88,7 @@ public class Bird implements Serializable {
     }
 
     public void setSpecies(String species) {
-        this.species = species;
+        this.species = StringUtils.lowerCase(species);
     }
 
     public String getFamily() {
@@ -117,7 +120,7 @@ public class Bird implements Serializable {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = StringUtils.lowerCase(color);
     }
 
     public String getHabitat() {
@@ -125,7 +128,7 @@ public class Bird implements Serializable {
     }
 
     public void setHabitat(String habitat) {
-        this.habitat = habitat;
+        this.habitat = StringUtils.lowerCase(habitat);
     }
 
     public String getPhoto() {

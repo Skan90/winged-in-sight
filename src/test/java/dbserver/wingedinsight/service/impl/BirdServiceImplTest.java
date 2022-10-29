@@ -6,6 +6,7 @@ import dbserver.wingedinsight.repository.BirdRepository;
 import dbserver.wingedinsight.service.exceptions.DuplicatedKeyViolationException;
 import dbserver.wingedinsight.service.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -25,16 +26,16 @@ import static org.mockito.Mockito.*;
 class BirdServiceImplTest {
 
     public static final Integer ID = 4242;
-    public static final String NAME_PT_BR = "João-grande";
-    public static final String NAME_ENG = "Maguari Stork";
-    public static final String SPECIES = "Ciconia maguari";
-    public static final String FAMILY = "Ciconiidae";
+    public static final String NAME_PT_BR = "joão-grande";
+    public static final String NAME_ENG = "maguari stork";
+    public static final String SPECIES = "ciconia maguari";
+    public static final String FAMILY = "ciconiidae";
     public static final Integer SIZE = 85;
     public static final String GENDER = "Fêmea";
-    public static final String COLOR = "Branca";
-    public static final String HABITAT = "Banhado com espelho d'água, Campo alagado, campo úmido, várzeas alagadas";
+    public static final String COLOR = "branca";
+    public static final String HABITAT = "banhado com espelho d'água, ccmdampo alagado, campo úmido, várzeas alagadas";
     public static final String PHOTO = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg";
-    public static final String LOCALIZATION = "South and Extreme North of Brazil";
+    public static final String LOCALIZATION = "Sul e extremo norte do Brasil";
     public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";
     public static final String BIRD_NOT_FOUND_BY_THE_ID = "Bird not found by the ID number given. Please, try another ID.";
     public static final int INDEX = 0;
@@ -93,6 +94,54 @@ class BirdServiceImplTest {
         when(birdRepository.findAll()).thenReturn(List.of((bird)));
 
         List<Bird> response = service.findAllBirds();
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(Bird.class, response.get(INDEX).getClass());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+    }
+
+
+    @Test
+    void whenFindBySpeciesContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
+        when(birdRepository.findBySpeciesContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
+
+        List<Bird> response = service.findBySpeciesContainingIgnoreCase("cOniA");
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(Bird.class, response.get(INDEX).getClass());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+    }
+
+    @Test
+    void whenFindByNamePtBrContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
+        when(birdRepository.findByNamePtBrContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
+
+        List<Bird> response = service.findByNamePtBrContainingIgnoreCase("AnDe");
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(Bird.class, response.get(INDEX).getClass());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+    }
+
+
+
+    @Test
+    void whenFindByNameEngContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
+        when(birdRepository.findByNameEngContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
+
+        List<Bird> response = service.findByNameEngContainingIgnoreCase("GuArI");
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -223,4 +272,5 @@ class BirdServiceImplTest {
                 PHOTO,
                 LOCALIZATION));
     }
+
 }

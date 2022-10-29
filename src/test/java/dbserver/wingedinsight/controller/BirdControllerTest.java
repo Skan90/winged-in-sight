@@ -16,14 +16,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BirdControllerTest {
 
     public static final Integer ID = 4242;
-    public static final String NAME_PT_BR = "João-grande";
-    public static final String NAME_ENG = "Maguari Stork";
-    public static final String SPECIES = "Ciconia maguari";
+    public static final String NAME_PT_BR = "joão-grande";
+    public static final String NAME_ENG = "maguari Stork";
+    public static final String SPECIES = "ciconia maguari";
     public static final String FAMILY = "Ciconiidae";
     public static final Integer SIZE = 85;
     public static final String GENDER = "Fêmea";
-    public static final String COLOR = "Branca";
-    public static final String HABITAT = "Banhado com espelho d'água | Campo alagado, campo úmido, várzeas alagadas";
+    public static final String COLOR = "branca";
+    public static final String HABITAT = "banhado com espelho d'água, campo alagado, campo úmido, várzeas alagadas";
     public static final String PHOTO = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg";
     public static final String LOCALIZATION = "South and Extreme North of Brazil";
     public static final String BIRD_SPECIES_ALREADY_REGISTERED = "Bird species already registered in the system. Please, try adding a new bird species";

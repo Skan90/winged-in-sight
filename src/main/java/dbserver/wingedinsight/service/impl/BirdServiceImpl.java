@@ -62,15 +62,22 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
 
 
     @Override
-    public List<Bird> findBySpeciesContaining(String species) {
-        List<Bird> results = birdRepository.findBySpeciesContaining(species);
+    public List<Bird> findBySpeciesContainingIgnoreCase(String species) {
+        List<Bird> results = birdRepository.findBySpeciesContainingIgnoreCase(species);
         return results;
 
     }
 
     @Override
-    public List<Bird> findByNamePtBrContaining(String namePtBr) {
-        List<Bird> results = birdRepository.findByNamePtBrContaining(namePtBr);
+    public List<Bird> findByNamePtBrContainingIgnoreCase(String namePtBr) {
+        List<Bird> results = birdRepository.findByNamePtBrContainingIgnoreCase(namePtBr);
+        return results;
+
+    }
+
+    @Override
+    public List<Bird> findByNameEngContainingIgnoreCase(String nameEng) {
+        List<Bird> results = birdRepository.findByNameEngContainingIgnoreCase(nameEng);
         return results;
 
     }

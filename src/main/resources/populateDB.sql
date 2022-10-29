@@ -10,17 +10,17 @@ INSERT INTO bird(id,
     photo,
     localization
     )
-VALUES('400',
-       'João-grande',
-       'Maguari Stork',
-       'Ciconia maguari',
+VALUES('500',
+       'joão-grande',
+       'maguari Stork',
+       'ciconia maguari',
        'Ciconiidae',
        '85',
        'Fêmea',
-       'Branca',
-       'Banhado com espelho d''água | Campo alagado, campo úmido, várzeas alagadas',
+       'branca',
+       'banhado com espelho d''água, campo alagado, campo úmido, várzeas alagadas',
        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Maguari_Stork_%28Ciconia_maguari%29.jpg/420px-Maguari_Stork_%28Ciconia_maguari%29.jpg',
-       'South and Extreme North of Brazil'
+       'Sul e Extremo Norte do Brasil'
   ) ON CONFLICT DO NOTHING;
 
 INSERT INTO bird(id,
@@ -35,17 +35,17 @@ INSERT INTO bird(id,
                  photo,
                  localization
 )
-VALUES('401',
-       'Cabeça-seca',
-       'Wood Stork',
-       'Mycteria americana',
+VALUES('501',
+       'cabeça-seca',
+       'wood Stork',
+       'mycteria americana',
        'Ciconiidae',
        '65',
        'Macho',
-       'Branca',
-       'Banhado com espelho d''água | Campo alagado, campo úmido, várzeas alagadas',
+       'branca',
+       'banhado com espelho d''água, campo alagado, campo úmido, várzeas alagadas',
        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/WoodStorkWhole.JPG/420px-WoodStorkWhole.JPG',
-       'Latin America'
+       'América Latina'
       ) ON CONFLICT DO NOTHING;
 
 INSERT INTO bird(id,
@@ -60,15 +60,15 @@ INSERT INTO bird(id,
                  photo,
                  localization
 )
-VALUES('402',
-       'Cisne-de-pescoço-preto',
-       'Black-necked-swan',
-       'Cygnus melancoryphus',
+VALUES('502',
+       'cisne-de-pescoço-preto',
+       'black-necked-swan',
+       'cygnus melancoryphus',
        'Anatidae',
        '80',
        'Macho',
-       'Branca',
-       'Banhado com espelho d''água | Campo alagado, campo úmido, várzeas alagadas',
+       'branca',
+       'banhado com espelho d''água, campo alagado, campo úmido, várzeas alagadas',
        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Cygnus_Melancoryphus.jpg/420px-Cygnus_Melancoryphus.jpg',
-       'South of South America'
+       'Sul da América do Sul'
       ) ON CONFLICT DO NOTHING;

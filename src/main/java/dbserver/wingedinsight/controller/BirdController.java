@@ -50,13 +50,13 @@ public class BirdController {
     }
     @ApiOperation(value = "Listando todas as aves cadastradas por parte do nome da espécie (nome em latim).")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Aves listadas com sucesso.")
+            @ApiResponse(code = 200, message = "Ave(s) listada(s) com sucesso.")
     })
     @GetMapping("/find-by-species/{species}")
-    public ResponseEntity<List<BirdDto>> findBySpeciesContaining(@PathVariable("species") String species){
+    public ResponseEntity<List<BirdDto>> findBySpeciesContainingIgnoreCase(@PathVariable("species") String species){
         log.info("Listando a(s) ave(s) contendo parte da espécie (nome em latim) com [{}]", species);
         return ResponseEntity.ok().body(
-                birdService.findBySpeciesContaining(species)
+                birdService.findBySpeciesContainingIgnoreCase(species)
                         .stream()
                         .map(x -> mapper.map(x, BirdDto.class))
                         .collect(Collectors.toList())
@@ -66,13 +66,30 @@ public class BirdController {
 
     @ApiOperation(value = "Listando todas as aves cadastradas por parte do nome da em portguês.")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Aves listadas com sucesso.")
+            @ApiResponse(code = 200, message = "Ave(s) listada(s) com sucesso.")
     })
     @GetMapping("/find-by-name-ptbr/{namePtBr}")
-    public ResponseEntity<List<BirdDto>> findByNamePtBrContaining(@PathVariable("namePtBr") String namePtBr){
+    public ResponseEntity<List<BirdDto>> findByNamePtBrContainingIgnoreCase(@PathVariable("namePtBr") String namePtBr){
         log.info("Listando a(s) ave(s) contendo parte do nome em português com [{}]", namePtBr);
         return ResponseEntity.ok().body(
-                birdService.findByNamePtBrContaining(namePtBr)
+                birdService.findByNamePtBrContainingIgnoreCase(namePtBr)
+                        .stream()
+                        .map(x -> mapper.map(x, BirdDto.class))
+                        .collect(Collectors.toList())
+        );
+    }
+
+
+
+    @ApiOperation(value = "Listando todas as aves cadastradas por parte do nome da em inglês.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ave(s) listada(s) com sucesso.")
+    })
+    @GetMapping("/find-by-name-eng/{nameEng}")
+    public ResponseEntity<List<BirdDto>> findByNameEngContainingIgnoreCase(@PathVariable("nameEng") String nameEng){
+        log.info("Listando a(s) ave(s) contendo parte do nome em inglês com [{}]", nameEng);
+        return ResponseEntity.ok().body(
+                birdService.findByNameEngContainingIgnoreCase(nameEng)
                         .stream()
                         .map(x -> mapper.map(x, BirdDto.class))
                         .collect(Collectors.toList())
@@ -123,7 +140,7 @@ public class BirdController {
     }
     @ApiOperation(value = "Excluindo uma ave pelo id informado.")
     @ApiResponses(value = {
-            @ApiResponse(code = 204, message = "Ave excluida com sucesso."),
+            @ApiResponse(code = 204, message = "Ave excluída com sucesso."),
             @ApiResponse(code = 404, message = "Ave NÃO encontrada, por favor, verifique o ID e tente novamente.")
     })
     @DeleteMapping(value = ID)
