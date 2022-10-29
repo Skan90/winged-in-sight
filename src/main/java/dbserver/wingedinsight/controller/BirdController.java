@@ -63,6 +63,23 @@ public class BirdController {
         );
     }
 
+
+    @ApiOperation(value = "Listando todas as aves cadastradas por parte do nome da em portguês.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Aves listadas com sucesso.")
+    })
+    @GetMapping("/find-by-name-ptbr/{namePtBr}")
+    public ResponseEntity<List<BirdDto>> findByNamePtBrContaining(@PathVariable("namePtBr") String namePtBr){
+        log.info("Listando a(s) ave(s) contendo parte do nome em português com [{}]", namePtBr);
+        return ResponseEntity.ok().body(
+                birdService.findByNamePtBrContaining(namePtBr)
+                        .stream()
+                        .map(x -> mapper.map(x, BirdDto.class))
+                        .collect(Collectors.toList())
+        );
+    }
+
+
     @ApiOperation(value = "Buscando uma ave pelo id informado.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ave encontrada com sucesso."),

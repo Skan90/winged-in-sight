@@ -12,6 +12,8 @@ public interface BirdService {
 
     List<Bird> findBySpeciesContaining(String species);
 
+    List<Bird> findByNamePtBrContaining(String namePtBr);
+
     Bird create(BirdDto obj);
     
     Bird update(BirdDto obj);

@@ -60,9 +60,17 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
         }
     }
 
+
     @Override
     public List<Bird> findBySpeciesContaining(String species) {
         List<Bird> results = birdRepository.findBySpeciesContaining(species);
+        return results;
+
+    }
+
+    @Override
+    public List<Bird> findByNamePtBrContaining(String namePtBr) {
+        List<Bird> results = birdRepository.findByNamePtBrContaining(namePtBr);
         return results;
 
     }
