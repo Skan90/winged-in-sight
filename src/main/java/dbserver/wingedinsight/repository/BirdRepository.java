@@ -15,5 +15,10 @@ public interface BirdRepository extends JpaRepository<Bird, Integer> {
     List<Bird> findBySpeciesContainingIgnoreCase(String species);
 
     List<Bird> findByNamePtBrContainingIgnoreCase(String namePtBr);
+
     List<Bird> findByNameEngContainingIgnoreCase(String nameEng);
+
+    List<Bird> findByColorContainingIgnoreCase(String color);
+
+    List<Bird> findByHabitatContainingIgnoreCase(String habitat);
 }

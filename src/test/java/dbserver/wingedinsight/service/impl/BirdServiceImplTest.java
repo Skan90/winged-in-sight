@@ -52,7 +52,9 @@ class BirdServiceImplTest {
 
 
     private Bird bird;
+    private Bird birdTwo;
     private BirdDto birdDto;
+    private List<Bird> birdList;
     private Optional<Bird> birdOptional;
 
     BirdServiceImplTest() {
@@ -107,9 +109,11 @@ class BirdServiceImplTest {
 
     @Test
     void whenFindBySpeciesContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
-        when(birdRepository.findBySpeciesContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
 
-        List<Bird> response = service.findBySpeciesContainingIgnoreCase("cOniA");
+        when(birdRepository.findBySpeciesContainingIgnoreCase(anyString())).thenReturn(List.of(bird));
+
+
+        List<Bird> response = service.findBySpeciesContainingIgnoreCase(SPECIES);
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -124,7 +128,7 @@ class BirdServiceImplTest {
     void whenFindByNamePtBrContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
         when(birdRepository.findByNamePtBrContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
 
-        List<Bird> response = service.findByNamePtBrContainingIgnoreCase("AnDe");
+        List<Bird> response = service.findByNamePtBrContainingIgnoreCase(NAME_PT_BR);
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -141,7 +145,7 @@ class BirdServiceImplTest {
     void whenFindByNameEngContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
         when(birdRepository.findByNameEngContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
 
-        List<Bird> response = service.findByNameEngContainingIgnoreCase("GuArI");
+        List<Bird> response = service.findByNameEngContainingIgnoreCase(NAME_ENG);
 
         assertNotNull(response);
         assertEquals(1, response.size());
@@ -150,6 +154,41 @@ class BirdServiceImplTest {
         assertEquals(ID, response.get(INDEX).getId());
         assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+    }
+
+
+
+
+    @Test
+    void whenFindByColorEngContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
+        when(birdRepository.findByColorContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
+
+        List<Bird> response = service.findByColorContainingIgnoreCase(COLOR);
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(Bird.class, response.get(INDEX).getClass());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(COLOR, response.get(INDEX).getColor());
+    }
+
+    @Test
+    void whenFindByHabitatContainingPartOfSomeStringIgnoringCaseSensitiveThenReturnAnListOfBirds() {
+        when(birdRepository.findByHabitatContainingIgnoreCase(anyString())).thenReturn(List.of((bird)));
+
+        List<Bird> response = service.findByHabitatContainingIgnoreCase(HABITAT);
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(Bird.class, response.get(INDEX).getClass());
+
+        assertEquals(ID, response.get(INDEX).getId());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
     }
 
     @Test

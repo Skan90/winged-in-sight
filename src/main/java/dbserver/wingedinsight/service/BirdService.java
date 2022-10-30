@@ -16,6 +16,10 @@ public interface BirdService {
 
     List<Bird> findByNameEngContainingIgnoreCase(String nameEng);
 
+    List<Bird> findByColorContainingIgnoreCase(String color);
+
+    List<Bird> findByHabitatContainingIgnoreCase(String habitat);
+
     Bird create(BirdDto obj);
     
     Bird update(BirdDto obj);

@@ -81,4 +81,18 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
         return results;
 
     }
+
+    @Override
+    public List<Bird> findByColorContainingIgnoreCase(String color) {
+        List<Bird> results = birdRepository.findByColorContainingIgnoreCase(color);
+        return results;
+
+    }
+
+    @Override
+    public List<Bird> findByHabitatContainingIgnoreCase(String color) {
+        List<Bird> results = birdRepository.findByHabitatContainingIgnoreCase(color);
+        return results;
+
+    }
 }
