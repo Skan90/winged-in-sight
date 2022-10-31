@@ -11,6 +11,13 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class BirdControllerTest {
@@ -52,11 +59,52 @@ class BirdControllerTest {
     @Test
     @Disabled
     void findAllBirds() {
+
     }
 
     @Test
-    @Disabled
-    void findById() {
+    void whenFindByIdThenReturnSuccess() {
+        when(service.findById(anyInt())).thenReturn(bird);
+        when(mapper.map(any(), any())).thenReturn(birdDto);
+
+        ResponseEntity<BirdDto> response = controller.findById(ID);
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(BirdDto.class, response.getBody().getClass());
+
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NAME_ENG, response.getBody().getNameEng());
+        assertEquals(NAME_PT_BR, response.getBody().getNamePtBr());
+        assertEquals(SPECIES, response.getBody().getSpecies());
+        assertEquals(FAMILY, response.getBody().getFamily());
+        assertEquals(SIZE, response.getBody().getSize());
+        assertEquals(GENDER, response.getBody().getGender());
+        assertEquals(COLOR, response.getBody().getColor());
+        assertEquals(HABITAT, response.getBody().getHabitat());
+        assertEquals(PHOTO, response.getBody().getPhoto());
+    }
+
+
+    @Test
+    void findBySpeciesContainingIgnoreCase() {
+    }
+
+    @Test
+    void findByNamePtBrContainingIgnoreCase() {
+    }
+
+    @Test
+    void findByNameEngContainingIgnoreCase() {
+    }
+
+    @Test
+    void findByColorContainingIgnoreCase() {
+    }
+
+    @Test
+    void findByHabitatContainingIgnoreCase() {
     }
 
     @Test
@@ -102,4 +150,5 @@ class BirdControllerTest {
                 LOCALIZATION);
 
     }
+
 }

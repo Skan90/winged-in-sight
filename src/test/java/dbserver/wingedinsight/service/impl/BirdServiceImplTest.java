@@ -74,9 +74,17 @@ class BirdServiceImplTest {
 
         assertNotNull(response);
         assertEquals(Bird.class, response.getClass());
+
         assertEquals(ID, response.getId());
-        assertEquals(SPECIES, response.getSpecies());
         assertEquals(NAME_ENG, response.getNameEng());
+        assertEquals(NAME_PT_BR, response.getNamePtBr());
+        assertEquals(SPECIES, response.getSpecies());
+        assertEquals(FAMILY, response.getFamily());
+        assertEquals(SIZE, response.getSize());
+        assertEquals(GENDER, response.getGender());
+        assertEquals(COLOR, response.getColor());
+        assertEquals(HABITAT, response.getHabitat());
+        assertEquals(PHOTO, response.getPhoto());
     }
     @Test
     void whenFindByIdReturnsAnObjectNotFoundException(){
@@ -102,8 +110,15 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
+        assertEquals(COLOR, response.get(INDEX).getColor());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
 
@@ -120,8 +135,15 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
+        assertEquals(COLOR, response.get(INDEX).getColor());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
     @Test
@@ -135,8 +157,15 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
         assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
+        assertEquals(COLOR, response.get(INDEX).getColor());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
 
@@ -152,8 +181,15 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
+        assertEquals(COLOR, response.get(INDEX).getColor());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
 
@@ -170,9 +206,15 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
         assertEquals(COLOR, response.get(INDEX).getColor());
+        assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
     @Test
@@ -186,30 +228,43 @@ class BirdServiceImplTest {
         assertEquals(Bird.class, response.get(INDEX).getClass());
 
         assertEquals(ID, response.get(INDEX).getId());
-        assertEquals(SPECIES, response.get(INDEX).getSpecies());
         assertEquals(NAME_ENG, response.get(INDEX).getNameEng());
+        assertEquals(NAME_PT_BR, response.get(INDEX).getNamePtBr());
+        assertEquals(SPECIES, response.get(INDEX).getSpecies());
+        assertEquals(FAMILY, response.get(INDEX).getFamily());
+        assertEquals(SIZE, response.get(INDEX).getSize());
+        assertEquals(GENDER, response.get(INDEX).getGender());
+        assertEquals(COLOR, response.get(INDEX).getColor());
         assertEquals(HABITAT, response.get(INDEX).getHabitat());
+        assertEquals(PHOTO, response.get(INDEX).getPhoto());
     }
 
     @Test
     void whenCreateBirdThenReturnSuccess() {
-        // given
-        when(birdRepository.save(any())).thenReturn(bird);
-        // when
-        Bird response = service.create(birdDto);
-        // then
-        assertNotNull(response);
-        assertEquals(ID, response.getId());
-        assertEquals(SPECIES, response.getSpecies());
-        assertEquals(NAME_ENG, response.getNameEng());
 
+        when(birdRepository.save(any())).thenReturn(bird);
+
+        Bird response = service.create(birdDto);
+
+        assertNotNull(response);
+
+        assertEquals(ID, response.getId());
+        assertEquals(NAME_ENG, response.getNameEng());
+        assertEquals(NAME_PT_BR, response.getNamePtBr());
+        assertEquals(SPECIES, response.getSpecies());
+        assertEquals(FAMILY, response.getFamily());
+        assertEquals(SIZE, response.getSize());
+        assertEquals(GENDER, response.getGender());
+        assertEquals(COLOR, response.getColor());
+        assertEquals(HABITAT, response.getHabitat());
+        assertEquals(PHOTO, response.getPhoto());
     }
 
     @Test
     void whenCreateBirdThenReturnAnDuplicatedKeyViolationException() {
-        // given
+
         when(birdRepository.findBySpecies(anyString())).thenReturn(birdOptional);
-        // when
+
 
         try{
             birdOptional.get().setId(2);
@@ -222,15 +277,23 @@ class BirdServiceImplTest {
 
     @Test
     void whenUpdateBirdThenReturnSuccess() {
-        // given
+
         when(birdRepository.save(any())).thenReturn(bird);
-        // when
+
         Bird response = service.update(birdDto);
-        // then
+
         assertNotNull(response);
+
         assertEquals(ID, response.getId());
-        assertEquals(SPECIES, response.getSpecies());
         assertEquals(NAME_ENG, response.getNameEng());
+        assertEquals(NAME_PT_BR, response.getNamePtBr());
+        assertEquals(SPECIES, response.getSpecies());
+        assertEquals(FAMILY, response.getFamily());
+        assertEquals(SIZE, response.getSize());
+        assertEquals(GENDER, response.getGender());
+        assertEquals(COLOR, response.getColor());
+        assertEquals(HABITAT, response.getHabitat());
+        assertEquals(PHOTO, response.getPhoto());
 
     }
 
