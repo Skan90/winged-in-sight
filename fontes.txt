@@ -34,3 +34,7 @@ https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#appendix.que
 https://www.baeldung.com/spring-jpa-like-queries
 
 https://youtube.com/playlist?list=PLNA1TW-Zfz6PHtNQ2ueqjP55wdsos2ULc
+
+https://angular.io/guide/lazy-loading-ngmodules#lazy-loading-basics
+
+https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
