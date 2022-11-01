@@ -38,3 +38,5 @@ https://youtube.com/playlist?list=PLNA1TW-Zfz6PHtNQ2ueqjP55wdsos2ULc
 https://angular.io/guide/lazy-loading-ngmodules#lazy-loading-basics
 
 https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+
+https://www.devmedia.com.br/angular-http-como-realizar-requisicoes-em-suas-aplicacoes/40642
