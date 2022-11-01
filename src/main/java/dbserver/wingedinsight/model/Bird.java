@@ -1,6 +1,6 @@
 package dbserver.wingedinsight.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
@@ -18,6 +18,7 @@ import java.util.Objects;
 public class Bird implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("_id")
     private Integer id;
     private String namePtBr;
     private String nameEng;
