@@ -19,6 +19,7 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
     private BirdRepository birdRepository;
 
     private ModelMapper mapper;
+
     @Autowired
     public BirdServiceImpl(@Qualifier("postgresql") BirdRepository birdRepository, ModelMapper mapper) {
         this.birdRepository = birdRepository;
@@ -28,8 +29,10 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
     @Override
     public Bird findById(Integer id) {
         Optional<Bird> obj = birdRepository.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Bird not found by the ID number given. Please, try another ID."));
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Bird not found by the ID number given. Please, try another ID."));
     }
+
     public List<Bird> findAllBirds() {
 
         return birdRepository.findAll();
@@ -55,44 +58,37 @@ public class BirdServiceImpl implements dbserver.wingedinsight.service.BirdServi
 
     private void findBySpecies(BirdDto obj) {
         Optional<Bird> bird = birdRepository.findBySpecies(obj.getSpecies());
-        if(bird.isPresent() && !bird.get().getId().equals(obj.getId())) {
-            throw new DuplicatedKeyViolationException("Bird species already registered in the system. Please, try adding a new bird species");
+        if (bird.isPresent() && !bird.get().getId().equals(obj.getId())) {
+            throw new DuplicatedKeyViolationException(
+                    "Bird species already registered in the system. Please, try adding a new bird species");
         }
     }
 
-
     @Override
     public List<Bird> findBySpeciesContainingIgnoreCase(String species) {
-        List<Bird> results = birdRepository.findBySpeciesContainingIgnoreCase(species);
-        return results;
+        return birdRepository.findBySpeciesContainingIgnoreCase(species);
 
     }
 
     @Override
     public List<Bird> findByNamePtBrContainingIgnoreCase(String namePtBr) {
-        List<Bird> results = birdRepository.findByNamePtBrContainingIgnoreCase(namePtBr);
-        return results;
-
+        return birdRepository.findByNamePtBrContainingIgnoreCase(namePtBr);
     }
 
     @Override
     public List<Bird> findByNameEngContainingIgnoreCase(String nameEng) {
-        List<Bird> results = birdRepository.findByNameEngContainingIgnoreCase(nameEng);
-        return results;
+        return birdRepository.findByNameEngContainingIgnoreCase(nameEng);
 
     }
 
     @Override
     public List<Bird> findByColorContainingIgnoreCase(String color) {
-        List<Bird> results = birdRepository.findByColorContainingIgnoreCase(color);
-        return results;
+        return birdRepository.findByColorContainingIgnoreCase(color);
 
     }
 
     @Override
-    public List<Bird> findByHabitatContainingIgnoreCase(String color) {
-        List<Bird> results = birdRepository.findByHabitatContainingIgnoreCase(color);
-        return results;
-
+    public List<Bird> findByHabitatContainingIgnoreCase(String habitat) {
+        return birdRepository.findByHabitatContainingIgnoreCase(habitat);
     }
 }
