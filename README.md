@@ -2,6 +2,9 @@
 Project for DBServer onboarding process with PUC-RS
 
 # Swagger 2 (3.0.0) documentation for Controller
+###LOCAL
+http://localhost:8080/swagger-ui/
+###API
 https://wingedinsight.herokuapp.com/swagger-ui/
 
 # For Local Running
@@ -15,6 +18,8 @@ ALSO COMMENT in the first run lines under 'DataSource initialization to be able 
 For running inside the folder:
 
 gradlew bootRun
+
+Acess the API Swagger for more datails on GET/POST/PUT/DELETE methods.
 
 # Front end for the app with deployed API is found here
 
