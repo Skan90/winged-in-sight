@@ -2,9 +2,13 @@
 Project for DBServer onboarding process with PUC-RS
 
 # Swagger 2 (3.0.0) documentation for Controller
-###LOCAL
+LOCAL
+
 http://localhost:8080/swagger-ui/
-###API
+
+
+API
+
 https://wingedinsight.herokuapp.com/swagger-ui/
 
 # For Local Running
